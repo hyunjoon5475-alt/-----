@@ -38,7 +38,8 @@ body {
 .hero-wrapper {
   position: relative;
   min-height: 100vh;
-  background: linear-gradient(to right, rgba(251, 250, 245, 0.72) 0%, rgba(251, 250, 245, 0.35) 45%, rgba(251, 250, 245, 0) 70%),
+  background: linear-gradient(to right, rgba(251, 250, 245, 0.86) 0%, rgba(251, 250, 245, 0.5) 45%, rgba(251, 250, 245, 0.12) 100%),
+              linear-gradient(rgba(96, 80, 54, 0.10), rgba(96, 80, 54, 0.10)),
               var(--hero-img) 70% center/cover no-repeat;
   background-color: #efe9dd;
   color: var(--text-black);
@@ -145,8 +146,11 @@ header {
   font-weight: 400;
 }
 .btn-hero-pill {
-  display: inline-flex;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  width: 340px;
+  max-width: 100%;
   gap: 10px;
   background: var(--primary-forest);
   color: #fff;
@@ -593,3 +597,4 @@ footer {
     background-color: #efe9dd;
   }
 }
+/* /test 주석시키기 */
