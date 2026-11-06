@@ -598,3 +598,206 @@ footer {
   }
 }
 /* /test 주석시키기 */
+
+/* ====================================================
+   [다크모드 추가] 상단 테마 토글 스위치 & 다크모드 톤앤매너 스타일
+   ==================================================== */
+
+/* 1) 부드러운 테마 전환 트랜지션 */
+body,
+header,
+section,
+footer,
+.hero-wrapper,
+.step-item,
+.comp-box,
+.calc-card,
+.calc-val-item,
+.calc-select,
+.about-point,
+.for-card,
+.comm-card,
+.app-box,
+.c-card-img-box,
+.btn-nav-login,
+.btn-nav-start {
+  transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* 2) 상단 헤더 토글 스위치 UI (화이트/블랙 알약형 캡슐) */
+.theme-switch-wrapper {
+  display: inline-flex;
+  align-items: center;
+  background-color: rgba(23, 23, 25, 0.06);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.btn-theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 11px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-theme-toggle i {
+  font-size: 12px;
+}
+
+.btn-theme-toggle.active {
+  background-color: #ffffff;
+  color: var(--text-black);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* 모바일 화면 대응: 공간 확보를 위해 스위치 여백 최적화 */
+@media (max-width: 540px) {
+  .header-right {
+    gap: 8px;
+  }
+  .btn-theme-toggle {
+    padding: 4px 8px;
+    font-size: 11.5px;
+  }
+  .btn-nav-login {
+    display: none;
+  }
+}
+
+/* 3) 다크모드 컬러 변수 재정의 (눈이 편안한 웜 다크 & 세이지 그린 톤) */
+body.dark-mode {
+  --bg-cream: #141615;              /* 메인 배경: 차분한 딥 차콜 그린 */
+  --bg-warm-gray: #1a1d1b;          /* 서브 배경: 웜 다크 그레이 */
+  --text-black: #ecece6;            /* 메인 타이포: 눈부심 없는 소프트 아이보리 */
+  --text-muted: #a0a59e;           /* 보조 타이포: 차분한 그레이시 세이지 */
+  --text-light: #6e736d;            /* 캡션/노트: 다크 뮤트 톤 */
+  --primary-forest: #488262;        /* 포인트: 다크 배경에서 시인성 높은 세이지 그린 */
+  --primary-forest-hover: #589674;  /* 포인트 호버 */
+  --border-light: rgba(255, 255, 255, 0.08); /* 은은한 다크 보더 */
+}
+
+/* 4) 다크모드: 토글 스위치 자체 스타일 변경 */
+body.dark-mode .theme-switch-wrapper {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .btn-theme-toggle.active {
+  background-color: var(--primary-forest);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* 5) 다크모드: 히어로 섹션 배경 이미지 오버레이 및 GNB 보정 */
+body.dark-mode .hero-wrapper {
+  background: linear-gradient(to right, rgba(20, 22, 21, 0.94) 0%, rgba(20, 22, 21, 0.78) 50%, rgba(20, 22, 21, 0.45) 100%),
+              linear-gradient(rgba(15, 20, 17, 0.4), rgba(15, 20, 17, 0.4)),
+              var(--hero-img) 70% center/cover no-repeat;
+  background-color: #141615;
+}
+
+@media (max-width: 768px) {
+  body.dark-mode .hero-wrapper {
+    background: linear-gradient(rgba(20, 22, 21, 0.92), rgba(20, 22, 21, 0.86)),
+                var(--hero-img) 78% center/cover no-repeat;
+  }
+}
+
+body.dark-mode .nav-menu a {
+  color: var(--text-muted);
+}
+body.dark-mode .nav-menu a:hover {
+  color: var(--text-black);
+}
+
+body.dark-mode .btn-nav-login {
+  color: var(--text-muted);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+body.dark-mode .btn-nav-login:hover {
+  color: var(--text-black);
+  border-color: var(--text-black);
+}
+
+body.dark-mode .hero-desc {
+  color: #c2c6c0;
+}
+body.dark-mode .hero-notice {
+  color: var(--text-light);
+}
+
+/* 6) 다크모드: 화이트(#fff) 고정 배경 섹션 및 카드 컴포넌트 톤 다운 */
+body.dark-mode .section-about,
+body.dark-mode .section-steps,
+body.dark-mode .section-app,
+body.dark-mode .section-faq {
+  background-color: #181b19;
+}
+
+body.dark-mode .step-item,
+body.dark-mode .about-point,
+body.dark-mode .for-card,
+body.dark-mode .comm-card,
+body.dark-mode .calc-card,
+body.dark-mode .comp-box.before {
+  background-color: #202422;
+  border-color: var(--border-light);
+}
+
+body.dark-mode .calc-val-item {
+  background-color: #161917;
+  border: 1px solid var(--border-light);
+}
+
+/* 7) 다크모드: 그린 틴트 박스 (After 비교 박스 / 모바일 앱 안내 박스) */
+body.dark-mode .comp-box.after,
+body.dark-mode .app-box {
+  background-color: rgba(72, 130, 98, 0.12);
+  border-color: rgba(72, 130, 98, 0.3);
+}
+
+body.dark-mode .comp-box.before .comp-tag {
+  color: #f87171; /* 다크 배경에 맞춘 소프트 코랄 레드 */
+}
+body.dark-mode .comp-box.after .comp-tag {
+  color: #6ee7b7; /* 다크 배경에 맞춘 소프트 민트 그린 */
+}
+
+/* 8) 다크모드: 뱃지(Tag), 셀렉트 박스, 썸네일 조도 보정 */
+body.dark-mode .tag-live {
+  background-color: rgba(72, 130, 98, 0.22);
+  color: #86efac;
+}
+body.dark-mode .tag-app {
+  background-color: rgba(99, 115, 171, 0.2);
+  color: #a5b4fc;
+}
+body.dark-mode .tag-soon {
+  background-color: rgba(168, 146, 86, 0.2);
+  color: #fde047;
+}
+
+body.dark-mode .calc-select {
+  background-color: #161917;
+  color: var(--text-black);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+body.dark-mode .c-card-img-box {
+  background-color: #202422;
+}
+body.dark-mode .c-card-img-box img {
+  filter: brightness(0.88) contrast(1.04); /* 야간 눈부심 방지용 이미지 조도 조절 */
+}
+
+/* /[다크모드 추가] */
